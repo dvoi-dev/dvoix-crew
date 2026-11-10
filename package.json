@@ -1,0 +1,18 @@
+{
+  "name": "dvoix-crew",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Chat with AI coding agents (Claude Code, Codex, Pi) about your vault, as a dvoix store plugin.",
+  "license": "MIT OR Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  },
+  "engines": {
+    "node": ">=26"
+  }
+}

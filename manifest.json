@@ -1,0 +1,9 @@
+{
+  "id": "crew",
+  "name": "Crew",
+  "version": "0.1.0",
+  "description": "Chat with AI coding agents like Claude Code, Codex and Pi in the sidebar; they work right in your vault.",
+  "author": "damavoi",
+  "minAppVersion": "0.1.0",
+  "permissions": ["process"]
+}

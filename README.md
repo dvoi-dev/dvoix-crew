@@ -2,7 +2,7 @@
 
 Chat with AI coding agents in the sidebar of [dvoix](https://github.com/dvoi-dev/dvoix). Crew runs the agent you pick in your vault folder, so it can read, search and change your notes. Official store plugin: install it in dvoix under **Settings → Plugin store**.
 
-> Crew needs the `process` plugin permission, which dvoix does not have yet. The planned API is described in [docs/process-api.md](docs/process-api.md). Until the app supports it, the panel shows a notice.
+> Crew needs a dvoix version with the `process` plugin permission (dvoi-dev/dvoix#35). On older versions the panel shows a notice.
 
 ## Agents
 

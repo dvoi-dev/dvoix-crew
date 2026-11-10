@@ -4,7 +4,7 @@ Fixed rules for all AI agents (Claude, Codex, Copilot, …) working in this repo
 
 ## What this is
 
-Crew, the official store plugin for [dvoix](https://github.com/dvoi-dev/dvoix) that adds a chat panel for AI coding agents (Claude Code, Codex, Pi, …). Each message starts the agent's command line tool in the vault folder and shows its JSON output. The API it uses is described in `docs/plugins/README.md` of the app repo; the part it needs and the app does not have yet (`dvoix.process`) is in `docs/process-api.md` here.
+Crew, the official store plugin for [dvoix](https://github.com/dvoi-dev/dvoix) that adds a chat panel for AI coding agents (Claude Code, Codex, Pi, …). Each message starts the agent's command line tool in the vault folder and shows its JSON output. The API it uses (including `dvoix.process` and the `process` permission) is described in `docs/plugins/README.md` of the app repo.
 
 ## The dvoix repos
 
@@ -48,7 +48,7 @@ dvoix is spread across several repositories. This section is also in the `AGENTS
 1. **The agents do the work, Crew only shows it.** No own model calls, no API keys stored by Crew. Each tool uses its own login and settings.
 2. **One adapter per agent** in `src/agents.js`: how to call the tool and how to turn one output line into chat events. Unknown lines are ignored, so new tool versions don't break the chat. Every adapter has tests.
 3. **Prompts over stdin** where the tool allows it: `cmd.exe` on Windows mangles quotes and newlines in arguments.
-4. **Only the API, no app internals.** Crew talks to the app only through the `dvoix` object. Calls the app may not have yet (`dvoix.process`, `dvoix.workspace`) are checked before use.
+4. **Only the API, no app internals.** Crew talks to the app only through the `dvoix` object. Calls older app versions don't have (`dvoix.process`, `dvoix.workspace`) are checked before use.
 5. **Never change the `id`** (`crew`). It is the folder name in `<vault>/.dvoix/plugins/crew/` and the key in the plugin list.
 6. **Do not copy code from other plugins** (e.g. Claudian) without checking its license; Crew only takes ideas.
 7. **Always the newest versions** of Node.js (`.nvmrc`, `engines`), esbuild and the GitHub Actions.
@@ -63,7 +63,6 @@ src/main.js            entry point: registers the panel and the settings page
 src/agents.js          agent adapters, argument building, line splitting (no DOM)
 src/view.js            chat panel and settings page (plain DOM)
 test/agents.test.js    tests for the adapters (node --test)
-docs/process-api.md    the app API Crew needs (proposal for dvoix)
 scripts/build.mjs      bundles src/ into dist/main.js and copies manifest.json and styles.css
 .github/workflows/     ci.yml (test + build), release.yml (release on main)
 ```

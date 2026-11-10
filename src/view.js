@@ -146,7 +146,8 @@ export function mountChat(root, dvoix, state) {
         onExit: (code) => {
           if (running?.stopped) return finish("Stopped.");
           const failed = code !== 0 && !errored;
-          const hint = !gotText && !errored && code !== 0 ? stderr.trim().slice(-2000) || `${a.label} exited with code ${code}.` : null;
+          const notFound = /Program not found/.test(stderr) ? ` Install it with: ${a.install}` : "";
+          const hint = !gotText && !errored && code !== 0 ? (stderr.trim().slice(-2000) || `${a.label} exited with code ${code}.`) + notFound : null;
           finish(failed ? hint || `${a.label} exited with code ${code}.` : null);
         },
       });
